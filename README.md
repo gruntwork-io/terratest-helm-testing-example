@@ -1,6 +1,6 @@
 # Helm Chart Testing Example using Terratest
 
-This repository contains the example code from the blog post ["Testing Helm Charts using Terratest"](TODO).
+This repository contains the example code from the blog post ["Automated Testing for Kubernetes and Helm Charts using Terratest"](https://blog.gruntwork.io/automated-testing-for-kubernetes-and-helm-charts-using-terratest-a4ddc4e67344).
 
 The directory structure represents a typical helm chart repository containing various charts in the `charts` directory
 and the tests for those charts under the `test` directory. The `test` folder contains the corresponding terratest code
