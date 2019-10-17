@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gruntwork-io/terratest/modules/helm"
-	"github.com/gruntwork-io/terratest/modules/http-helper"
+	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/gruntwork-io/terratest/modules/k8s"
 	"github.com/gruntwork-io/terratest/modules/random"
 )
@@ -20,8 +20,7 @@ func TestPodDeploysContainerImage(t *testing.T) {
 	// - HOME/.kube/config for the kubectl config file
 	// - Current context of the kubectl config file
 	// We also specify that we are working in the default namespace (required to get the Pod)
-	kubectlOptions := k8s.NewKubectlOptions("", "")
-	kubectlOptions.Namespace = "default"
+	kubectlOptions := k8s.NewKubectlOptions("", "", "default")
 
 	// Setup the args. For this test, we will set the following input values:
 	// - image=nginx:1.15.8
@@ -63,6 +62,7 @@ func verifyNginxPod(t *testing.T, kubectlOptions *k8s.KubectlOptions, podName st
 	http_helper.HttpGetWithRetryWithCustomValidation(
 		t,
 		endpoint,
+		nil,
 		retries,
 		sleep,
 		func(statusCode int, body string) bool {

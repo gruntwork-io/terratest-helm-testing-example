@@ -10,24 +10,8 @@ for testing each of the charts in the `charts` directory.
 
 ### Prerequisites
 
-To run the tests, you will need:
-
-1. A working go install. See [here](https://golang.org/doc/install) for instructions on installing go on to your
-   platform.
-1. [`dep`](https://golang.github.io/dep/) for installing the package dependencies. See
-   [here](https://golang.github.io/dep/docs/installation.html) for instructions on installing dep.
-1. This repo checked out in your `GOPATH` in the format go expects. The easiest way to do this is to use `go env` to
-   lookup the `GOPATH` and derive the directory from there. The following commands should work on most Unix go
-   installations:
-
-    ```
-    mkdir -p "$(go env GOPATH)/src/github.com/gruntwork-io"
-    git clone https://github.com/gruntwork-io/terratest-helm-testing-example.git "$(go env GOPATH)/src/github.com/gruntwork-io/terratest-helm-testing-example"
-    ```
-
-   <!-- TODO: figure out Windows environments -->
-
-Once you have the repository checked out and the necessary tools in place, you are ready to run the tests.
+To run the tests, you will need a working go install. See [here](https://golang.org/doc/install) for instructions on
+installing go on to your platform. Make sure to use a version >=1.13.
 
 ### Kubernetes cluster
 
@@ -56,22 +40,9 @@ Server: &version.Version{SemVer:"v2.11.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a
 
 ### Running the tests
 
-To run the tests, first change directory to the `test` folder of this repository:
+To run the tests, first change directory to the `test` folder of this repository, and then use `go test` to run the tests:
 
 ```
-cd "$(go env GOPATH)/src/github.com/gruntwork-io/terratest-helm-testing-example/test"
-```
-
-You then need to pull in the dependencies using `dep`:
-
-```
-dep ensure
-```
-
-This will clone all the referenced go packages into a local folder called `vendor` so that go knows where to find them.
-
-Finally, run the tests:
-
-```
+cd test
 go test -v .
 ```
