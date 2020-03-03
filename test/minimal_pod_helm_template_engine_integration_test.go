@@ -10,7 +10,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/random"
 )
 
-func TestPodDeploysContainerImageTillerless(t *testing.T) {
+func TestPodDeploysContainerImageHelmTemplateEngine(t *testing.T) {
 	// Path to the helm chart we will test
 	helmChartPath := "../charts/minimal-pod"
 
@@ -30,7 +30,7 @@ func TestPodDeploysContainerImageTillerless(t *testing.T) {
 	}
 
 	// Run RenderTemplate to render the template and capture the output.
-	output := helm.RenderTemplate(t, options, helmChartPath, []string{})
+	output := helm.RenderTemplate(t, options, helmChartPath, "minimal-pod", []string{})
 
 	// Make sure to delete the resources at the end of the test
 	defer k8s.KubectlDeleteFromString(t, kubectlOptions, output)

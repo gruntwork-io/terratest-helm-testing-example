@@ -19,24 +19,8 @@ Some of the tests (specifically the integration tests) require a Kubernetes clus
 Kuberenetes cluster is to use [`minikube`](https://kubernetes.io/docs/setup/minikube/), which is a local single node
 installation of Kubernetes. Follow the instructions in the link to install and setup `minikube`.
 
-Once `minikube` is installed, you will also need to deploy Tiller to run the tests based on `helm install`. To deploy
-Tiller, you will first need to install the helm client. Follow the [official
-guide](https://helm.sh/docs/using_helm/#installing-helm) for instructions on installing `helm`.
-
-Once `helm` is installed, you can setup Tiller on `minikube` using `helm init`:
-
-```
-helm init --wait
-```
-
-To verify Tiller deployed correctly, use `helm version`. If the deploy was successful, you should see both the client
-and server versions:
-
-```
-$ helm version
-Client: &version.Version{SemVer:"v2.11.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
-Server: &version.Version{SemVer:"v2.11.0", GitCommit:"2e55dbe1fdb5fdb96b75ff144a339489417b146b", GitTreeState:"clean"}
-```
+Once `minikube` is installed, you will also need to install the helm client run the tests based on `helm install`.
+Follow the [official guide](https://helm.sh/docs/intro/install/) for instructions on installing `helm`.
 
 ### Running the tests
 

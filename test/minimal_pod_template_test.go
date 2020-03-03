@@ -19,7 +19,7 @@ func TestPodTemplateRendersContainerImage(t *testing.T) {
 	}
 
 	// Run RenderTemplate to render the template and capture the output.
-	output := helm.RenderTemplate(t, options, helmChartPath, []string{"templates/pod.yaml"})
+	output := helm.RenderTemplate(t, options, helmChartPath, "pod", []string{"templates/pod.yaml"})
 
 	// Now we use kubernetes/client-go library to render the template output into the Pod struct. This will
 	// ensure the Pod resource is rendered correctly.
